@@ -86,6 +86,7 @@ const questions = [
 function writeToFile(fileName, data) {
     const markdown = generateMarkdown(data);
     fs.writeFile(fileName, markdown, (err) => {
+        console.log(fileName);
         if (err) {
             console.error(err);
         } else {
@@ -97,7 +98,7 @@ function writeToFile(fileName, data) {
 
 //Function to initialize app
 function init() {
-    inquirer.createPromptModule(questions).then((answers) => {
+    inquirer.prompt(questions).then((answers) => {
         writeToFile("README.md", answers);
     });
 }
