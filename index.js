@@ -41,7 +41,6 @@ const questions = [
             "License",
             "Contributing",
             "Tests",
-            "Licence"
         ]
     },
     {
