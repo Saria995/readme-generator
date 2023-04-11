@@ -61,12 +61,19 @@ function renderLicenseSection(license) {
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
+  let tableOfContents = '';
+  data.tableOfContents.forEach(item => {
+    tableOfContents += `* [${item}](#${item.toLowerCase().replace('-')})\n`;
+  });
+
   return `# ${data.title}
 
   # Description
   ${data.description}
+
   # Table of Contents
-  ${data.tableOfContents}
+  
+  ${tableOfContents}
 
   ## Installation
   The following necessary dependencies must be installed to run the application ${data.installation}
