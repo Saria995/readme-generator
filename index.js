@@ -37,7 +37,7 @@ const questions = [
         message: "Select the sections you want to include in the Table of Contents",
         choices: [
             "Installation",
-            "Usuage",
+            "Usage",
             "License",
             "Contributing",
             "Tests",
@@ -54,7 +54,7 @@ const questions = [
         message: "What languages/technologies were used in this project?",
     },
     {
-        type: "checkbox",
+        type: "list",
         name: "license",
         message: "Select the license applicable to this project.",
         choices: [

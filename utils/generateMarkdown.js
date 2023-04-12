@@ -1,30 +1,32 @@
-const fs = require('fs');
 // Function that returns a license badge based on which license is passed in
 // If there is no license, it will return an empty string return an empty string
 function renderLicenseBadge(license) {
+  //console.log("checking if license exist in renderLicenseBadge function 1st line");
+  console.log(license);
   if (!license) {
     return "";
   }
 
-  switch (license.toLowerCase()) {
+  let badge = "";
+
+  switch (license) {
     case "MIT":
-      return "https://img.shields.io/badge/License-MIT-yellow.svg";
+      badge = "https://img.shields.io/badge/License-MIT-yellow.svg";
+      break;
     case "ISC":
-      return "https://img.shields.io/badge/License-ISC-blue.svg";
+      badge = "https://img.shields.io/badge/License-ISC-blue.svg";
+      break;
     case "MS-PL":
-      return "https://img.shields.io/badge/License-MS--PL-brightgreen.svg";
+      badge = "https://img.shields.io/badge/License-MS--PL-brightgreen.svg";
+      break;
     case "LGPL":
-      return "https://img.shields.io/badge/License-LGPL_v3-blue.svg";
+      badge = "https://img.shields.io/badge/License-LGPL_v3-blue.svg";
+      break;
     default:
       return "";
   }
-}
 
-// This code first generates the badge URl using the renderLicenseBadge function, then check if the URL is empty, it's found then the license link will be generated using the renderLicenseLink
-const badge = renderLicenseBadge(data.license);
-
-if (badge) {
-  markdown += `[![License](${badge})](${renderLicenseLink(data.license)})\n\n`;
+  return badge;
 }
 
 // Function that returns the license link
@@ -34,7 +36,7 @@ function renderLicenseLink(license) {
     return "";
   }
 
-  switch (license.toLowerCase()) {
+  switch (license) {
     case "MIT":
       return "https://opensource.org/licenses/MIT";
     case "ISC":
@@ -79,20 +81,21 @@ function generateMarkdown(data) {
   The following necessary dependencies must be installed to run the application ${data.installation}
 
   ## Usage
-  In order to use this application, ${data.usage}
+  Languages/Technologies used in this functionality include:, ${data.usage}
   ${renderLicenseSection(data.license)}
+  [![License](${renderLicenseBadge(data.license)})](${renderLicenseLink(data.license)})\n\n
 
   ## Contributing
-  Contributors: ${data.contributing}
+  Contributors: ${data.contributing}<br>
   Creator: ${data.name}
 
   ## Tests
   The following is required to run the test: ${data.test}
 
   ## Questions
-  If you have any questions about the repo, open an issue or contact:
-  GitHub: https://github.com/${data.creator}/n
-  Email: ${data.email}/n
+  If you have any questions about the repo, open an issue or contact:<br>
+  GitHub: https://github.com/${data.creator};<br>
+  Email: ${data.email};
 
 `;
 }
